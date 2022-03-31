@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ASP.NET Uygulamam</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Logo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Mağazalar", "Store", "Home")</li>
+                    <li>@Html.ActionLink("Kategoriler", "Roles", "Home")</li>
+                    <li>@Html.ActionLink("Kullanıcılar", "Users", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ASP.NET Uygulamam</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+    var IsDigit = (function () {
+        var KeyIdentifierMap = { End: 35, Home: 36, Left: 37, Right: 39, Virgul: 44, 'U+00007F': 46 };
+        return function (e) {
+            if (!e) e = event;
+            var iCode = (e.keyCode || e.charCode);
+            if (!iCode && e.keyIdentifier && (e.keyIdentifier in KeyIdentifierMap)) iCode = KeyIdentifierMap[e.keyIdentifier];
+            return ((iCode >= 48 && iCode <= 57) || (iCode >= 35 && iCode <= 40) || iCode == 8 || iCode == 9 || iCode == 44);
+        }
+    })();
+    </script>
+</body>
+</html>

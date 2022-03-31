@@ -1,0 +1,48 @@
+﻿@model List<StoreDiscountApp.Models.User>
+@{
+    ViewBag.Title = "User List";
+}
+<h2>@ViewBag.Title</h2>
+<div class="row"><div class="col-md-12 text-right"> @Html.ActionLink("Add", "AddUser", null, new { @class = "btn btn-primary" })</div></div>
+<table class="table table-hover table-responsive table-striped" >
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        #@Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        <div class="btn-group pull-right ">
+                            @Html.ActionLink("Edit", "EditUser", new { id = item.Id }, new { @class = "btn btn-sm btn-success" })
+                            @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+                        </div>
+                    </td>
+                </tr>
+                    }
+                }
+            }
+    </tbody>
+</table>
